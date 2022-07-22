@@ -47,18 +47,18 @@ contract Lottery is VRFConsumerBaseV2, KeeperCompatible {
 
     /* Methods */
     constructor(
-        uint256 entranceFee,
         address vrfCoordinator,
-        bytes32 keyHash,
         uint64 subscriptionId,
+        bytes32 keyHash,
+        uint256 entranceFee,
         uint32 callbackGasLimit,
         uint256 interval
     ) VRFConsumerBaseV2(vrfCoordinator) {
-        i_entranceFee = entranceFee;
         i_vrfCoordinator = VRFCoordinatorV2Interface(vrfCoordinator);
-        s_lotteryState = LotteryState.OPEN;
-        i_keyHash = keyHash;
         i_subscriptionId = subscriptionId;
+        i_keyHash = keyHash;
+        i_entranceFee = entranceFee;
+        s_lotteryState = LotteryState.OPEN;
         i_callbackGasLimit = callbackGasLimit;
         i_interval = interval;
         s_lastTimestamp = block.timestamp;
