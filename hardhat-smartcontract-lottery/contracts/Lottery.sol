@@ -5,7 +5,7 @@ import '@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol';
 import '@chainlink/contracts/src/v0.8/KeeperCompatible.sol';
 
 /* Errors */
-error Lottery__NotEnoughETHEntred();
+error Lottery__NotEnoughETHEntered();
 error Lottery__TransferFailed();
 error Lottery__CLOSED();
 error Lottery__UpkeepNotNeeded(uint256 currentBalance, uint256 numPlayers, uint256 lotteryState);
@@ -17,7 +17,7 @@ error Lottery__UpkeepNotNeeded(uint256 currentBalance, uint256 numPlayers, uint2
 contract Lottery is VRFConsumerBaseV2, KeeperCompatible {
     /* Events */
     event LotteryEnter(address indexed lotteryPlayer);
-    event RquestedWinner(uint256 indexed requestId);
+    event RequestedWinner(uint256 indexed requestId);
     event WinnerPicked(address indexed lotteryWinner);
 
     /* Custom types */
@@ -66,7 +66,7 @@ contract Lottery is VRFConsumerBaseV2, KeeperCompatible {
 
     function enterLottery() public payable {
         if (msg.value < i_entranceFee) {
-            revert Lottery__NotEnoughETHEntred();
+            revert Lottery__NotEnoughETHEntered();
         }
         if (s_lotteryState != LotteryState.OPEN) {
             revert Lottery__CLOSED();
@@ -144,7 +144,7 @@ contract Lottery is VRFConsumerBaseV2, KeeperCompatible {
             i_callbackGasLimit,
             NUM_WORDS
         );
-        emit RquestedWinner(requestId);
+        emit RequestedWinner(requestId);
     }
 
     /* View methodes */
@@ -170,6 +170,10 @@ contract Lottery is VRFConsumerBaseV2, KeeperCompatible {
 
     function getLatestTimestamp() public view returns (uint256) {
         return s_lastTimestamp;
+    }
+
+    function getInterval() public view returns (uint256) {
+        return i_interval;
     }
 
     /* Pure methodes */
