@@ -164,7 +164,7 @@ contract Lottery is VRFConsumerBaseV2, KeeperCompatible {
         return s_lotteryState;
     }
 
-    function getNumberOfPlayer() public view returns (uint256) {
+    function getNumberOfPlayers() public view returns (uint256) {
         return s_players.length;
     }
 
