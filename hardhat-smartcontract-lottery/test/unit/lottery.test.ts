@@ -1,10 +1,10 @@
 import { assert, expect } from 'chai';
 import { Contract } from 'ethers';
 import { deployments, ethers, getNamedAccounts, network } from 'hardhat';
-import { developmentChains, networkConfig } from '../helper-hardhat-config';
+import { developmentChains, networkConfig } from '../../helper-hardhat-config';
 
 developmentChains.includes(network.name) &&
-  describe('Lottery', () => {
+  describe('Lottery Unit Tests', () => {
     let lotteryContract: Contract,
       vrfCoordinatorV2MockContract: Contract,
       entranceFee: any,
