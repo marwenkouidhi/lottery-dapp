@@ -8,8 +8,17 @@ const menu = [
     url: "/",
   },
   {
-    text: "How to Play",
+    text: "How to play",
     url: "/how-to-play",
+  },
+  {
+    text: "About us",
+    url: "/about-us",
+  },
+
+  {
+    text: "Whitepaper",
+    url: "/whitepaper",
   },
 ];
 
@@ -17,7 +26,7 @@ const Header = () => {
   return (
     <div className="flex justify-between items-center py-2">
       <div className="flex items-center space-x-8  ">
-        <div className="flex items-center  space-x-2  ">
+        <div className="flex items-center  space-x-2 text-lg font-semibold  ">
           <Image src="/lottery.png" height={40} width={40} />
           <h1>Dottery</h1>
         </div>

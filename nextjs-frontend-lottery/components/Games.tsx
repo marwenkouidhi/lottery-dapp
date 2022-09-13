@@ -40,7 +40,7 @@ const Games = () => {
     <div className=" grid gap-2">
       <div className="flex justify-between items-center">
         <h1 className="text-lg font-semibold">Recent Draws</h1>
-        <span className="rounded-full border-solid border-2 px-6 p-1 cursor-pointer hover:bg-gray-200 dark:hover:bg-slate-800">
+        <span className="rounded-full border-solid border-2 px-6 p-1 cursor-pointer hover:brightness-95 dark:hover:brightness-125 bg-gray-200 dark:bg-slate-800">
           ALL
         </span>
       </div>

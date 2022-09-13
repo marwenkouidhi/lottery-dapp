@@ -6,7 +6,7 @@ import Winners from "../components/Winners";
 export default function Home() {
   return (
     <div className=" grid gap-5">
-      {/* <HeroSection /> */}
+      <HeroSection />
       <Winners />
       <Games />
     </div>
