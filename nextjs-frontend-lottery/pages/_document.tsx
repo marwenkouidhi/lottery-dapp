@@ -10,12 +10,12 @@ class SpecialDocument extends Document {
         <Head>
           <title>Lottery</title>
           <link rel="icon" type="image/png" sizes="32x32" href="/lottery.png" />
-          <link
+          {/* <link
             href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
             rel="stylesheet"
-          />
+          /> */}
         </Head>
-        <body className="bg-gray-100 text-slate-900 dark:bg-slate-900  dark:text-white ">
+        <body>
           <Main />
           <NextScript />
         </body>
