@@ -1,37 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import { menu } from "../data/header";
 import Toggle from "./Toggle";
-
-const menu = [
-  {
-    text: "Home",
-    url: "/",
-  },
-  {
-    text: "How to play",
-    url: "/how-to-play",
-  },
-  {
-    text: "About us",
-    url: "/about-us",
-  },
-
-  {
-    text: "Whitepaper",
-    url: "/whitepaper",
-  },
-];
 
 const Header = () => {
   return (
-    <div className="flex justify-between items-center py-2">
+    <div className="flex justify-between items-center py-2  w-[90%] mx-auto">
       <div className="flex items-center space-x-8  ">
         <div className="flex items-center  space-x-2 text-lg font-semibold  ">
           <Image src="/lottery.png" height={40} width={40} />
           <h1>Dottery</h1>
         </div>
 
-        <div className="flex space-x-5">
+        <div className="hidden md:flex space-x-5">
           {menu.map(({ text, url }, _) => (
             <Link href={url}>
               <div className="text-md border-solid border-2 border-transparent cursor-pointer">

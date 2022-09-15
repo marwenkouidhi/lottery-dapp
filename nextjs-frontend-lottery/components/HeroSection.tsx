@@ -5,7 +5,7 @@ import { MdTimelapse } from "react-icons/md";
 const HeroSection = () => {
   const days = [];
   return (
-    <div className="font-semibold hover:dark:brightness-105 hover:brightness-95">
+    <div className="font-semibold hover:dark:brightness-105 hover:brightness-95 ">
       <div className="flex items-end justify-center opacity-80 dark:opacity-60 space-x-3 ">
         <div className="-mb-1">
           <Image src="/celebration1.png" height={150} width={150} />

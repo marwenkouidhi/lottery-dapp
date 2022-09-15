@@ -3,59 +3,21 @@ import Link from "next/link";
 import React from "react";
 import { AiFillFacebook, AiOutlineTwitter, AiFillGithub } from "react-icons/ai";
 import { FaTelegramPlane } from "react-icons/fa";
-const menu = [
-  {
-    text: "Home",
-    url: "/",
-  },
-  {
-    text: "How to play",
-    url: "/how-to-play",
-  },
-  {
-    text: "About us",
-    url: "/about-us",
-  },
-  {
-    text: "Terms of use",
-    url: "/terms-of-use",
-  },
-  {
-    text: "Whitepaper",
-    url: "/whitepaper",
-  },
-];
-const contact = [
-  {
-    icon: AiFillFacebook,
-    url: "#",
-  },
-  {
-    icon: AiOutlineTwitter,
-    url: "#",
-  },
-  {
-    icon: AiFillGithub,
-    url: "#",
-  },
-  {
-    icon: FaTelegramPlane,
-    url: "#",
-  },
-];
+import { contact, menu } from "../data/footer";
+
 const Footer = () => {
   return (
     <div className="bg-gray-200 dark:bg-slate-800 grow  ">
       <div className="max-w-screen-xl mx-auto py-5 grid gap-3 divide-y-2 divide-gray-400 dark:divide-slate-700 ">
-        <div className=" flex justify-between items-center">
-          <div className="flex items-center  space-x-2 text-lg font-semibold  ">
+        <div className=" grid md:grid-cols-3 gap-4">
+          <div className="flex items-center  space-x-2 text-lg font-semibold ">
             <Image src="/lottery.png" height={30} width={30} />
             <h1>Dottery</h1>
           </div>
-          <div className="flex space-x-5">
+          <div className="grid  md:grid-cols-5 justify-items-center">
             {menu.map(({ text, url }, _) => (
               <Link href={url} key={_}>
-                <div className="text-md border-solid border-2 border-transparent cursor-pointer">
+                <div className="text-md border-solid border-2 border-transparent hover:border-b-white cursor-pointer">
                   {text}
                 </div>
               </Link>
