@@ -10,7 +10,7 @@ const LiveFeed = () => {
       <div className="flex justify-between items-center p-4 py-6 ">
         <h1 className="text-lg font-semibold relative">
           Recent Bets
-          <div className="absolute -right-3 -top-3 text-xs flex space-x-1 items-center dark:bg-slate-700 bg-gray-300 px-2 rounded-md ">
+          <div className="absolute left-0 -top-3 text-xs flex space-x-1 items-center dark:bg-slate-700 bg-gray-300 px-2 rounded-md ">
             <span className="relative flex h-2 w-2  ">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-red-400"></span>
@@ -27,17 +27,23 @@ const LiveFeed = () => {
         <div className="grid gap-1">
           <div className="grid grid-cols-3 px-4 border-solid border-b-4 dark:border-slate-900 border-gray-400 text-base py-1">
             {header.map((item, _) => (
-              <div>{item}</div>
+              <div key={_}>{item}</div>
             ))}
           </div>
           <div>
             {recentBets.map(({ player, date, combination }, _) => (
-              <div className="grid grid-cols-3 py-2  items-center px-4 border-solid border-b-4 border-gray-100 dark:border-slate-900 cursor-pointer   ">
+              <div
+                key={_}
+                className="grid grid-cols-3 py-2  items-center px-4 border-solid border-b-4 border-gray-100 dark:border-slate-900 cursor-pointer   "
+              >
                 <div>{player}</div>
                 <div>{date}</div>
                 <div className="flex space-x-2">
                   {combination.map((item, _) => (
-                    <div className="bg-gray-300 dark:bg-slate-700 w-8 h-8 flex justify-center items-center rounded-full  ">
+                    <div
+                      key={_}
+                      className="bg-gray-300 dark:bg-slate-700 w-8 h-8 flex justify-center items-center rounded-full  "
+                    >
                       {item}
                     </div>
                   ))}

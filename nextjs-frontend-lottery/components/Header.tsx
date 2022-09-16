@@ -14,7 +14,7 @@ const Header = () => {
 
         <div className="hidden md:flex space-x-5">
           {menu.map(({ text, url }, _) => (
-            <Link href={url}>
+            <Link key={_} href={url}>
               <div className="text-md border-solid border-2 border-transparent cursor-pointer">
                 {text}
               </div>

@@ -10,7 +10,7 @@ const Footer = () => {
     <div className="bg-gray-200 dark:bg-slate-800 grow  ">
       <div className="max-w-screen-xl mx-auto py-5 grid gap-3 divide-y-2 divide-gray-400 dark:divide-slate-700 ">
         <div className=" grid md:grid-cols-3 gap-4">
-          <div className="flex items-center  space-x-2 text-lg font-semibold ">
+          <div className="flex items-center justify-center md:justify-start space-x-2 text-lg font-semibold ">
             <Image src="/lottery.png" height={30} width={30} />
             <h1>Dottery</h1>
           </div>
@@ -25,7 +25,10 @@ const Footer = () => {
           </div>
           <div className="flex space-x-1 justify-center">
             {contact.map(({ icon: Icon, url }, _) => (
-              <div className="p-2 bg-gray-300 dark:bg-slate-700 rounded-full hover:brightness-95 dark:hover:brightness-125 cursor-pointer">
+              <div
+                key={_}
+                className="p-2 bg-gray-300 dark:bg-slate-700 rounded-full hover:brightness-95 dark:hover:brightness-125 cursor-pointer"
+              >
                 <Icon size={20} />
               </div>
             ))}

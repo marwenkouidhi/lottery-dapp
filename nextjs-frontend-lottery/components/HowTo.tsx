@@ -16,7 +16,10 @@ const HowTo = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 ">
         {howTo.map((item, _) => {
           return (
-            <div className="cursor-pointer bg-gray-200 dark:bg-slate-800 p-4 py-6  rounded-md hover:brightness-95 dark:hover:brightness-105 hover:scale-105  ease-in-out duration-300  col-span-full sm:col-span-2 md:col-span-1 ">
+            <div
+              key={_}
+              className="cursor-pointer bg-gray-200 dark:bg-slate-800 p-4 py-6  rounded-md hover:brightness-95 dark:hover:brightness-105 hover:scale-105  ease-in-out duration-300  col-span-full sm:col-span-2 md:col-span-1 "
+            >
               <Image src={item.imgUrl} height={70} width={70} />
               <p>{item.text}</p>
             </div>
