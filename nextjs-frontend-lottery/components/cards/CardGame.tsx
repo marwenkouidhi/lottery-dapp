@@ -17,7 +17,7 @@ const CardGame = ({ game }) => {
 
       <div className="flex  justify-between">
         {numbers.map((nbr, _) => (
-          <div className="bg-gray-300 dark:bg-slate-700 w-8 py-1 text-center rounded-full">
+          <div className="bg-gray-300 dark:bg-slate-700 w-8 h-8 flex justify-center items-center rounded-full ">
             {nbr}
           </div>
         ))}

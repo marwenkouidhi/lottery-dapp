@@ -5,7 +5,7 @@ import Toggle from "./Toggle";
 
 const Header = () => {
   return (
-    <div className="flex justify-between items-center py-2  w-[90%] mx-auto">
+    <div className="flex justify-between items-center py-2  w-[90%] mx-auto sm:w-full">
       <div className="flex items-center space-x-8  ">
         <div className="flex items-center  space-x-2 text-lg font-semibold  ">
           <Image src="/lottery.png" height={40} width={40} />

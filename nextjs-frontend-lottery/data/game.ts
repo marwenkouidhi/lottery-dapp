@@ -113,3 +113,31 @@ export const games = [
     winners: 47,
   },
 ];
+
+export const recentBets = [
+  {
+    player: "Dominic Jhonson",
+    date: "02.03.2022",
+    combination: [2, 23, 56, 12, 49, 22],
+  },
+  {
+    player: "Dominic Jhonson",
+    date: "02.03.2022",
+    combination: [2, 23, 56, 12, 49, 22],
+  },
+  {
+    player: "Dominic Jhonson",
+    date: "02.03.2022",
+    combination: [2, 23, 56, 12, 49, 22],
+  },
+  {
+    player: "Dominic Jhonson",
+    date: "02.03.2022",
+    combination: [2, 23, 56, 12, 49, 22],
+  },
+  {
+    player: "Dominic Jhonson",
+    date: "02.03.2022",
+    combination: [2, 23, 56, 12, 49, 22],
+  },
+];
