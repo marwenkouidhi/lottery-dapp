@@ -17,7 +17,7 @@
     4. Share any other tips or guidance for others attempting this or something similar.
  -->
 
-![image](https://user-images.githubusercontent.com/79730125/190867209-3ec5674c-7474-4cdd-9b54-876c2527002a.png)
+![image](https://user-images.githubusercontent.com/79730125/190867366-0ad993f2-8edc-4a52-917e-2ef7f539a24f.png)
 
 ### Built With
 
