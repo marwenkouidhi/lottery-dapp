@@ -8,10 +8,8 @@ import Slider from "../components/Winners";
 import { useAuth } from "../store/authContext";
 
 export default function Home() {
-  const { authState, getProvider } = useAuth();
-  useEffect(() => {
-    getProvider();
-  }, []);
+  const { authState } = useAuth();
+
   console.log(authState);
   return (
     <div className="grid gap-5">

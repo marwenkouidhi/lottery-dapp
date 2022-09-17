@@ -1,5 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import detectEthereumProvider from "@metamask/detect-provider";
+import { ethers } from "ethers";
+import { formatEther } from "ethers/lib/utils";
 type Props = {
   children: JSX.Element;
 };
@@ -11,26 +13,32 @@ declare global {
 type authStateType = {
   metamaskInstalled: boolean;
   isAuthenticated: boolean;
-  accounts: string[];
+  account: string;
   network: string;
+  balance: string;
+  provider: ethers.providers.Web3Provider;
+  metamask: Promise<object>;
 };
 type authContextType = {
   authState: authStateType;
   login: () => void;
   logout: () => void;
-  getProvider: () => void;
+  initializeState: () => void;
 };
 
 const initialContext: authContextType = {
   authState: {
+    provider: null,
     metamaskInstalled: null,
-    isAuthenticated: null,
-    accounts: [],
+    account: null,
     network: null,
+    isAuthenticated: null,
+    balance: null,
+    metamask: null,
   },
   login: () => {},
   logout: () => {},
-  getProvider: () => {},
+  initializeState: () => {},
 };
 
 const AuthContext = createContext<authContextType | null>(initialContext);
@@ -41,31 +49,69 @@ const AuthProvider = ({ children }: Props) => {
   const [authState, setAuthState] = useState<authStateType>(
     initialContext.authState
   );
-  const login = () => {
-    if (authState.metamaskInstalled) {
-      setAuthState({ ...authState, isAuthenticated: true });
-    }
-  };
-  const logout = () => {};
 
-  const getProvider = async () => {
-    const provider = await detectEthereumProvider();
-    if (provider) {
-      const network = await provider.request({
-        method: "eth_chainId",
+  const initializeState = async () => {
+    try {
+      const metamask: Promise<object> = await detectEthereumProvider();
+      if (metamask) {
+        const account = (await metamask.request({ method: "eth_accounts" }))[0];
+        const provider = new ethers.providers.Web3Provider(metamask);
+        if (account) {
+          setAuthState({
+            ...authState,
+            provider,
+            metamaskInstalled: true,
+            metamask,
+            isAuthenticated: true,
+            account,
+            network: await metamask.request({ method: "eth_chainId" }),
+            balance: formatEther(await provider.getBalance(account)),
+          });
+        } else {
+          setAuthState({
+            ...authState,
+            provider,
+            metamask,
+            metamaskInstalled: true,
+          });
+        }
+      } else {
+        setAuthState({ ...authState, metamaskInstalled: false });
+      }
+    } catch (e) {}
+  };
+  const login = async () => {
+    if (authState.metamaskInstalled) {
+      await authState.metamask.request({ method: "eth_requestAccounts" });
+      const account = (
+        await authState.metamask.request({ method: "eth_accounts" })
+      )[0];
+
+      setAuthState({
+        ...authState,
+        isAuthenticated: true,
+        account,
+        network: await authState.metamask.request({ method: "eth_chainId" }),
+        balance: formatEther(await authState.provider.getBalance(account)),
       });
-      setAuthState({ ...authState, metamaskInstalled: true, network });
-    } else {
-      setAuthState({ ...authState, metamaskInstalled: false });
     }
   };
+  const logout = () => {
+    setAuthState({ ...authState, isAuthenticated: false });
+  };
+  useEffect(() => {
+    initializeState();
+    ethereum.on("accountsChanged", () => {
+      initializeState();
+    });
+  }, []);
   return (
     <AuthContext.Provider
       value={{
         authState,
         login,
         logout,
-        getProvider,
+        initializeState,
       }}
     >
       {children}

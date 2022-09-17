@@ -18,8 +18,18 @@ const Winners = () => {
         </p>
       </div>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
+        breakpoints={{
+          0: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          900: {
+            slidesPerView: 4,
+          },
+        }}
+        spaceBetween={5}
         pagination={{
           clickable: true,
         }}

@@ -9,16 +9,20 @@ export const menu: Array<MenuItem> = [
     url: "/",
   },
   {
-    text: "How to play",
-    url: "/how-to-play",
+    text: "Game",
+    url: "/game",
   },
   {
-    text: "About us",
-    url: "/about-us",
+    text: "How to play",
+    url: "/how-to-play",
   },
 
   {
     text: "Whitepaper",
     url: "/whitepaper",
+  },
+  {
+    text: "About us",
+    url: "/about-us",
   },
 ];

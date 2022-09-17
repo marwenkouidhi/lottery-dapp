@@ -5,14 +5,27 @@ import "../styles/globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import GlobalProvider from "../store/globalContext";
+import { useAuth } from "../store/authContext";
+import { useEffect, useState } from "react";
+import SideMenu from "../components/SideMenu";
+import { slide as Menu } from "react-burger-menu";
+
 function MyApp({ Component, pageProps }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <ThemeProvider attribute="class">
       <GlobalProvider>
         <div className=" mx-auto bg-gray-100 text-slate-800 dark:bg-slate-900  dark:text-white text-xs min-h-screen flex flex-col space-y-5 ">
-          <div className="max-w-screen-xl mx-auto flex flex-col space-y-3">
-            <Header />
-            <Component {...pageProps} />
+          <div className="max-w-screen-xl mx-auto flex flex-col ">
+            <Header toggleMenu={toggle} />
+            <div className="relative">
+              <SideMenu isOpen={isOpen} close={toggle} />
+              <Component {...pageProps} />
+            </div>
           </div>
           <Footer />
         </div>
