@@ -19,10 +19,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider attribute="class">
       <GlobalProvider>
-        <div className=" mx-auto bg-gray-100 text-slate-800 dark:bg-slate-900  dark:text-white text-xs min-h-screen flex flex-col space-y-5 ">
-          <div className="max-w-screen-xl mx-auto flex flex-col ">
+        <div className=" mx-auto bg-white text-slate-800 dark:bg-slate-900  dark:text-white text-xs min-h-screen flex flex-col space-y-5 ">
+          <div className=" flex flex-col space-y-4">
             <Header toggleMenu={toggle} />
-            <div className="relative">
+            <div className="relative max-w-screen-xl mx-auto">
               <SideMenu isOpen={isOpen} close={toggle} />
               <Component {...pageProps} />
             </div>

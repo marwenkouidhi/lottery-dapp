@@ -9,7 +9,7 @@ const Toggle = () => {
   };
   return (
     <div
-      className="w-14 cursor-pointer p-1 transition-all  duration-700 flex dark:justify-end rounded-md bg-sky-200 dark:bg-slate-800"
+      className="w-14 cursor-pointer p-1 transition-all  duration-700 flex dark:justify-end rounded-md bg-sky-200 dark:bg-slate-700"
       onClick={toggleTheme}
     >
       {theme === "dark" ? (

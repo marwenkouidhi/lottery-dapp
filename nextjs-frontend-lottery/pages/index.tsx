@@ -15,8 +15,8 @@ export default function Home() {
     <div className="grid gap-5">
       <Slider />
       <HeroSection />
-      <LiveFeed />
       <Games />
+      <LiveFeed />
       <HowTo />
     </div>
   );
