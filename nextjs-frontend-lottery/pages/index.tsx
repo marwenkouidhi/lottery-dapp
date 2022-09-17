@@ -5,13 +5,14 @@ import HeroSection from "../components/HeroSection";
 import HowTo from "../components/HowTo";
 import LiveFeed from "../components/LiveFeed";
 import Slider from "../components/Winners";
+import { useAuth } from "../store/authContext";
 
 export default function Home() {
+  const { authState, getProvider } = useAuth();
   useEffect(() => {
-    if (typeof window.ethereum !== "undefined") {
-      console.log("MetaMask is installed!");
-    }
+    getProvider();
   }, []);
+  console.log(authState);
   return (
     <div className="grid gap-5">
       <Slider />
